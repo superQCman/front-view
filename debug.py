@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,render_template
+from flask import Flask, jsonify,render_template,request
 import random
 from datetime import datetime, timedelta
 app = Flask(__name__)
@@ -21,8 +21,19 @@ def get_data():
     ]
     return jsonify(data)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        # 获取多选的值，返回的是一个列表
+        selected_provinces = request.form.getlist('multyselect')
+        # 获取单选的值
+        selected_time = request.form.get('choose_one')
+        
+        # 处理接收到的值
+        print('Selected Provinces:', selected_provinces)
+        print('Selected Time:', selected_time)
+        return 'Form submitted successfully'
     return render_template('客户主界面.html')
 
 if __name__ == '__main__':

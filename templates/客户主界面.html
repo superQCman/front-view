@@ -386,10 +386,16 @@
                                     <input type="tel" class="form-control" id="phone_number" name="phone_number"
                                         placeholder="联系电话" pattern="\d{11}" required>
                                 </div>
-                                
+                                <!-- 多选 -->
+                                <div class="select_box">
+                                    <div class="select_item provinces_region_box">
+                                        <select style="display: none;" id="provincesRegion" multiple placeholder="省份地区" name="" code="" name="多选窗口"></select>
+                                    </div>
+                                </div>
+                                <!-- 单选 -->
                                 <div class="select_box">
                                     <div class="select_item releace_time_box">
-                                        <select style="display: none;" id="releaceTime" placeholder="发布时间" name="" code="" name="多选窗口"> </select>
+                                        <select style="display: none;" id="releaceTime" placeholder="发布时间" name="" code="" name="单选窗口"> </select>
                                     </div>
                                 </div>
                                 <button type="submit">提 交</button>
@@ -494,6 +500,33 @@
     <!-- 添加 -->
     <script src="../static/js/jquery.dropdown.js"></script>
     <script>
+        $('.provinces_region_box').dropdown({
+            defaultdata: [{ "selected": false, "name": "全选", "id": "all" }], //默认数据-全选或不限
+            data: [
+                { "selected": false, "name": "北京", "id": "11000" },
+                { "selected": false, "name": "天津", "id": "12000" },
+                { "selected": false, "name": "河北", "id": "13000" },
+                { "selected": false, "name": "山西", "id": "14000" },
+                { "selected": false, "name": "内蒙古", "id": "150000" },
+                { "selected": false, "name": "辽宁", "id": "210000" },
+                { "selected": false, "name": "吉林", "id": "220000" },
+                { "selected": false, "name": "黑龙江", "id": "230000" },
+                { "selected": false, "name": "上海", "id": "310000" },
+                { "selected": false, "name": "江苏", "id": "320000" },
+                { "selected": false, "name": "浙江", "id": "330000" },
+                { "selected": false, "name": "安徽", "id": "340000" },
+            ],
+            readonly: false, //是否禁用
+            searchable: false, //下拉区域是否显示搜索框
+            limitCount: 2000, //限制数据总量
+            multipleMode: '', // 标记项模式 空字符串：文本模式 / 'label':标记项模式 / 'unfilling':内容不填充到输入框
+            choice: function (ele) { //选中返回（多选）
+                console.log(ele);
+            },
+            del: function () {
+                console.log('删除:', '初始化页面数据');
+            }
+        });
         //发布时间-单选
         $('.releace_time_box').dropdown({
             defaultdata: [{ "selected": false, "name": "全部", "id": "" }],

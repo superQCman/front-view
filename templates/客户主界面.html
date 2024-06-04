@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>客户主界面</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-4.6.2/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/plugins/fontawesome-free-6.5.2-web/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/left-side-menu.css">
+    <link rel="stylesheet" type="text/css" href="../static/font/iconfont.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/mention.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style-submit.css">
+    <link rel="stylesheet" href="../static/css/word-style.css">
+    <link rel="stylesheet" href="../static/css/style-main.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/iconfont.css">
+    <link rel="stylesheet" href="../static/css/jquery.dropdown_select.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'STXingkai';
+        }
+    
+        .rightBorder {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 100px;
+        }
+    
+        .disappear {
+            display: none !important;
+        }
+    
+        .right-side-content {
+            flex-grow: 1;
+            /* 右侧内容占据剩余空间 */
+            padding: 20px;
+            /* 内边距 */
+            box-sizing: border-box;
+            /* 盒模型 */
+            overflow-y: auto;
+            /* 如果内容超出高度，显示垂直滚动条 */
+            align-items: center;
+        }
+    
+        .container2 {
+            display: flex;
+            /* 使用 Flexbox 布局 */
+    
+        }
+    
+        .table {
+            width: 100%;
+            /* 表格宽度占据整个容器 */
+        }
+    
+        .input-group {
+            margin-bottom: 20px;
+            /* 输入框组与表格之间的间距 */
+        }
+    
+        .show_back_ground {
+            background-color: #4e555b;
+        }
+    
+        .radius {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    
+        .table td {
+            vertical-align: middle;
+            /* 让每个 td 内容垂直居中 */
+        }
+    
+        .margin {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    
+        .left_full {
+            width: 240px;
+            /* 左侧菜单宽度 */
+            /* height: 500vh; !* 左侧菜单高度固定为视口高度的 100% *! */
+            padding: 20px;
+            /* 内边距 */
+        }
+    
+        .select_item {
+            color: #4e555b;
+            position: relative;
+            margin-left: 8px;
+            width: 175px;
+            height: 40px;
+        }
+    
+        .select_group {
+            padding: 0 80px;
+        }
+    
+        .select_box {
+            padding: 20px 0;
+            color: #4e555b;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #e3f2fd;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px">
+        <!--    跳转回主界面-->
+        <a class="navbar-brand" href="#">家庭保单小管家</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <form class="form-inline mr-auto ml-auto" id="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <div class="rightBorder">
+                <ul class="navbar-right navbar-nav nav">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            用户
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">个人中心</a>
+                            <a class="dropdown-item" href="#">保险通知</a>
+                        </div>
+                    </li>
+            </div>
+            
+            <button type="button" class="button-default show-notifications js-show-notifications">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                    height="32" viewBox="0 0 30 32">
+                    <defs>
+                        <g id="icon-bell">
+                            <path class="path1"
+                                d="M15.143 30.286q0-0.286-0.286-0.286-1.054 0-1.813-0.759t-0.759-1.813q0-0.286-0.286-0.286t-0.286 0.286q0 1.304 0.92 2.223t2.223 0.92q0.286 0 0.286-0.286zM3.268 25.143h23.179q-2.929-3.232-4.402-7.348t-1.473-8.652q0-4.571-5.714-4.571t-5.714 4.571q0 4.536-1.473 8.652t-4.402 7.348zM29.714 25.143q0 0.929-0.679 1.607t-1.607 0.679h-8q0 1.893-1.339 3.232t-3.232 1.339-3.232-1.339-1.339-3.232h-8q-0.929 0-1.607-0.679t-0.679-1.607q3.393-2.875 5.125-7.098t1.732-8.902q0-2.946 1.714-4.679t4.714-2.089q-0.143-0.321-0.143-0.661 0-0.714 0.5-1.214t1.214-0.5 1.214 0.5 0.5 1.214q0 0.339-0.143 0.661 3 0.357 4.714 2.089t1.714 4.679q0 4.679 1.732 8.902t5.125 7.098z" />
+                        </g>
+                    </defs>
+                    <g fill="#000000">
+                        <use xlink:href="#icon-bell" transform="translate(0 0)"></use>
+                    </g>
+                </svg>
+                <div class="notifications-count js-count"></div>
+            </button>
+            </ul>
+        </div>
+    </nav>
+    <div class="container2 margin">
+        <div class="left_full">
+            <div class="left-side-menu">
+                <div class="lsm-container">
+                    <div class="lsm-scroll">
+                        <div class="lsm-sidebar">
+                            <ul>
+                                <li class="lsm-sidebar-item radius show_back_ground" onclick="clickme(this)">
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="record_1">家庭投保记录</span><i
+                                            class="my-icon lsm-sidebar-more"></i></a>
+                                </li>
+                                <li class="lsm-sidebar-item radius" onclick="clickme(this)">
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="record_2">家庭索赔记录</span><i
+                                            class="my-icon lsm-sidebar-more"></i></a>
+                                </li>
+                                <li class="lsm-sidebar-item radius" onclick="clickme(this)">
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="add_1">添加投保信息</span><i
+                                            class="my-icon lsm-sidebar-more"></i></a>
+                                </li>
+                                <li class="lsm-sidebar-item radius" onclick="clickme(this)">
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="add_2">添加索赔信息</span><i
+                                            class="my-icon lsm-sidebar-more"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side-content" >
+            <table class="table" id="Table_1">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">保险类型</th>
+                        <th scope="col">保费</th>
+                        <th scope="col">保险到期时间</th>
+                        <th scope="col">保险公司</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table disappear" id="Table_2">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">保险类型</th>
+                        <th scope="col">保费</th>
+                        <th scope="col">保险到期时间</th>
+                        <th scope="col">保险公司</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>202277k</td>
+                        <td>小明</td>
+                        <td>医疗险</td>
+                        <td>50万</td>
+                        <td>保终身</td>
+                        <td>平安保险</td>
+                        <td>
+                            <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
+                            <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                        </td>
+                    </tr>
+                    <!--            添加示例-->
+                    <!--            {% for item in data_list%}-->
+                    <!--                <tr>-->
+                    <!--                    <td>{{ item.ID }}</td>-->
+                    <!--                    <td>{{ item.name }}</td>-->
+                    <!--                    <td>{{ item.passport }}</td>-->
+                    <!--                    <td>{{ item.phone_number }}</td>-->
+                    <!--                    <td>-->
+                    <!--                        <a href="item.href"><button type="button" class="btn btn-light">详细信息</button></a>-->
+                    <!--                        <a href="item.href"><button type="button" class="btn btn-danger">修改</button></a>-->
+                    <!--                    </td>-->
+                    <!--                </tr>-->
+                    <!--            {% endfor %}-->
+                </tbody>
+            </table>
+
+            <!-- 如果要修改信息，把原本信息先传入前端显示 -->
+            <div class="container disappear" id="submit_first">
+                <!--end section heading-->
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <!--start contact form-->
+                        <div class="contact-box text-center">
+                            <h1 style="color: black;">保险产品信息填写</h1>
+                            <form id="ajax-contact" method="post" onsubmit="return validateForm()">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="policy_id" name="policy_id"
+                                            placeholder="保单号" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="被投保人姓名" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="starting_date" name="starting_date"
+                                            placeholder="保险生效日期" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="number" class="form-control" id="lasting" min="1" name="lasting"
+                                            placeholder="保险期限(天)" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="product_id" name="product_id"
+                                            placeholder="产品号" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="product_name" name="product_name"
+                                            placeholder="产品名称" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="number" class="form-control" id="cash_1" min="0" name="cash_1"
+                                            placeholder="保险金额(RMB)" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="number" class="form-control" id="cash_2" min="0" name="cash_2"
+                                            placeholder="保险费用(RMB)" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号" pattern="\d{15}|\d{18}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="location" name="location"
+                                        placeholder="联系地址" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" id="phone_number" name="phone_number"
+                                        placeholder="联系电话" pattern="\d{11}" required>
+                                </div>
+                                
+                                <div class="select_box">
+                                    <div class="select_item releace_time_box">
+                                        <select style="display: none;" id="releaceTime" placeholder="发布时间" name="" code="" name="多选窗口"> </select>
+                                    </div>
+                                </div>
+                                <button type="submit">提 交</button>
+                                <div id="form-messages"></div>
+                            </form>
+                        </div>
+                        <!--end contact form-->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container disappear" id="submit_second">
+                <!--end section heading-->
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <!--start contact form-->
+                        <div class="contact-box text-center">
+                            <h1>索赔信息填写</h1>
+                            <form id="ajax-contact" method="post" onsubmit="return validateForm()">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="pay_id" name="pay_id"
+                                            placeholder="索赔id号" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="policy_id" name="policy_id"
+                                            placeholder="保单号" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control" id="starting_date" name="starting_date"
+                                            placeholder="赔付日期" required>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="被投保人姓名" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号" pattern="\d{15}|\d{18}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="bank_account" name="bank_account"
+                                        placeholder="银行账号" required>
+                                </div>
+                                <button type="submit">提 交</button>
+                                <div id="form-messages"></div>
+                            </form>
+                        </div>
+                        <!--end contact form-->
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+    <script src="../static/js/jquery-3.7.1.min.js"></script>
+    <script>
+        function clickme(self) {
+            if (!$(self).hasClass('show_back_ground')) {
+                $(self).addClass('show_back_ground');
+                $(self).siblings().removeClass('show_back_ground')
+            }
+            var textContent = $(self).find('span').attr('id');
+            if (textContent === 'record_1' && $('#Table_1').hasClass('disappear')) {
+                var element = $('#Table_1');
+                element.removeClass('disappear');
+                $('#Table_2').addClass('disappear');
+                $('#submit_first').addClass('disappear');
+                $('#submit_second').addClass('disappear');
+                $('#search').children().removeClass('disappear');
+            } else if (textContent === 'record_2'&& $('#Table_2').hasClass('disappear')) {
+                var element = $('#Table_2');
+                element.removeClass('disappear');
+                $('#Table_1').addClass('disappear');
+                $('#submit_first').addClass('disappear');
+                $('#submit_second').addClass('disappear');
+                $('#search').children().removeClass('disappear');
+            } else if (textContent === 'add_1'&& $('#submit_first').hasClass('disappear')) {
+                var element = $('#submit_first');
+                element.removeClass('disappear');
+                $('#Table_2').addClass('disappear');
+                $('#Table_1').addClass('disappear');
+                $('#submit_second').addClass('disappear');
+                $('#search').children().addClass('disappear');
+            }else if (textContent === 'add_2'&& $('#submit_second').hasClass('disappear')){
+                var element = $('#submit_second');
+                element.removeClass('disappear');
+                $('#Table_2').addClass('disappear');
+                $('#Table_1').addClass('disappear');
+                $('#submit_first').addClass('disappear');
+                $('#search').children().addClass('disappear');
+            }
+        }
+
+    </script>
+    <!-- 添加 -->
+    <script src="../static/js/jquery.dropdown.js"></script>
+    <script>
+        //发布时间-单选
+        $('.releace_time_box').dropdown({
+            defaultdata: [{ "selected": false, "name": "全部", "id": "" }],
+            data: [
+                { "selected": false, "name": "近7天", "id": "7" },
+                { "selected": false, "name": "近一个月", "id": "30" },
+                { "selected": false, "name": "近三个月", "id": "90" },
+                { "selected": false, "name": "近半年", "id": "180" }
+            ],
+            readonly: false,
+            searchable: false,
+            limitCount: 2000,
+            multipleMode: '',
+            choice: function (ele) { //单选-直接跳链接
+                console.log(ele);
+            },
+            del: function () {
+                console.log('删除:', '初始化页面数据');
+            }
+        });
+    </script>
+    <script src="../static/js/jquery-3.7.1.min.js"></script>
+    <script src="../static/js/jquery.dropdown.js"></script>
+    <script src='../static/js/jquery.min.js'></script>
+    <script src='../static/js/mustache.min.js'></script>
+    <script src="../static/js/script-1.js"></script>
+    
+    <script src="../static/plugins/bootstrap-4.6.2/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../static/js/left-side-menu.js"></script>
+</body>
+
+</html>

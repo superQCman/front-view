@@ -21,18 +21,18 @@
             margin: 0;
             font-family: 'STXingkai';
         }
-    
+
         .rightBorder {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             padding-right: 100px;
         }
-    
+
         .disappear {
             display: none !important;
         }
-    
+
         .right-side-content {
             flex-grow: 1;
             /* 右侧内容占据剩余空间 */
@@ -44,42 +44,42 @@
             /* 如果内容超出高度，显示垂直滚动条 */
             align-items: center;
         }
-    
+
         .container2 {
             display: flex;
             /* 使用 Flexbox 布局 */
-    
+
         }
-    
+
         .table {
             width: 100%;
             /* 表格宽度占据整个容器 */
         }
-    
+
         .input-group {
             margin-bottom: 20px;
             /* 输入框组与表格之间的间距 */
         }
-    
+
         .show_back_ground {
             background-color: #4e555b;
         }
-    
+
         .radius {
             border-radius: 10px;
             overflow: hidden;
         }
-    
+
         .table td {
             vertical-align: middle;
             /* 让每个 td 内容垂直居中 */
         }
-    
+
         .margin {
             margin-top: 20px;
             margin-bottom: 20px;
         }
-    
+
         .left_full {
             width: 240px;
             /* 左侧菜单宽度 */
@@ -87,7 +87,7 @@
             padding: 20px;
             /* 内边距 */
         }
-    
+
         .select_item {
             color: #4e555b;
             position: relative;
@@ -95,11 +95,11 @@
             width: 175px;
             height: 40px;
         }
-    
+
         .select_group {
             padding: 0 80px;
         }
-    
+
         .select_box {
             padding: 20px 0;
             color: #4e555b;
@@ -136,10 +136,10 @@
                         </div>
                     </li>
             </div>
-            
+
             <button type="button" class="button-default show-notifications js-show-notifications">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
-                    height="32" viewBox="0 0 30 32">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="30" height="32" viewBox="0 0 30 32">
                     <defs>
                         <g id="icon-bell">
                             <path class="path1"
@@ -163,12 +163,12 @@
                         <div class="lsm-sidebar">
                             <ul>
                                 <li class="lsm-sidebar-item radius show_back_ground" onclick="clickme(this)">
-                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="record_1">家庭投保记录</span><i
-                                            class="my-icon lsm-sidebar-more"></i></a>
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span
+                                            id="record_1">家庭投保记录</span><i class="my-icon lsm-sidebar-more"></i></a>
                                 </li>
                                 <li class="lsm-sidebar-item radius" onclick="clickme(this)">
-                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="record_2">家庭索赔记录</span><i
-                                            class="my-icon lsm-sidebar-more"></i></a>
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span
+                                            id="record_2">家庭索赔记录</span><i class="my-icon lsm-sidebar-more"></i></a>
                                 </li>
                                 <li class="lsm-sidebar-item radius" onclick="clickme(this)">
                                     <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span id="add_1">添加投保信息</span><i
@@ -184,7 +184,7 @@
                 </div>
             </div>
         </div>
-        <div class="right-side-content" >
+        <div class="right-side-content">
             <table class="table" id="Table_1">
                 <thead class="thead-dark">
                     <tr>
@@ -208,6 +208,7 @@
                         <td>
                             <a href="#"><button type="button" class="btn btn-light">详细信息</button></a>
                             <a href="#"><button type="button" class="btn btn-danger">修改</button></a>
+                            <button type="button" class="btn btn-danger delete-btn">删除</button>
                         </td>
                     </tr>
                     <tr>
@@ -376,7 +377,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号" pattern="\d{15}|\d{18}">
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号"
+                                        pattern="\d{15}|\d{18}">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="location" name="location"
@@ -389,13 +391,15 @@
                                 <!-- 多选 -->
                                 <div class="select_box">
                                     <div class="select_item provinces_region_box">
-                                        <select style="display: none;" id="provincesRegion" multiple placeholder="省份地区" name="multyselect" code="" ></select>
+                                        <select style="display: none;" id="provincesRegion" multiple placeholder="省份地区"
+                                            name="multyselect" code=""></select>
                                     </div>
                                 </div>
                                 <!-- 单选 -->
                                 <div class="select_box">
                                     <div class="select_item releace_time_box">
-                                        <select style="display: none;" id="releaceTime" placeholder="发布时间" name="choose_one" code="" > </select>
+                                        <select style="display: none;" id="releaceTime" placeholder="发布时间"
+                                            name="choose_one" code=""> </select>
                                     </div>
                                 </div>
                                 <button type="submit">提 交</button>
@@ -406,7 +410,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="container disappear" id="submit_second">
                 <!--end section heading-->
                 <div class="row">
@@ -435,9 +439,10 @@
                                             placeholder="被投保人姓名" required>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号" pattern="\d{15}|\d{18}">
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="身份证号"
+                                        pattern="\d{15}|\d{18}">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="bank_account" name="bank_account"
@@ -451,10 +456,10 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
-    
+
 
 
     <script src="../static/js/jquery-3.7.1.min.js"></script>
@@ -472,21 +477,21 @@
                 $('#submit_first').addClass('disappear');
                 $('#submit_second').addClass('disappear');
                 $('#search').children().removeClass('disappear');
-            } else if (textContent === 'record_2'&& $('#Table_2').hasClass('disappear')) {
+            } else if (textContent === 'record_2' && $('#Table_2').hasClass('disappear')) {
                 var element = $('#Table_2');
                 element.removeClass('disappear');
                 $('#Table_1').addClass('disappear');
                 $('#submit_first').addClass('disappear');
                 $('#submit_second').addClass('disappear');
                 $('#search').children().removeClass('disappear');
-            } else if (textContent === 'add_1'&& $('#submit_first').hasClass('disappear')) {
+            } else if (textContent === 'add_1' && $('#submit_first').hasClass('disappear')) {
                 var element = $('#submit_first');
                 element.removeClass('disappear');
                 $('#Table_2').addClass('disappear');
                 $('#Table_1').addClass('disappear');
                 $('#submit_second').addClass('disappear');
                 $('#search').children().addClass('disappear');
-            }else if (textContent === 'add_2'&& $('#submit_second').hasClass('disappear')){
+            } else if (textContent === 'add_2' && $('#submit_second').hasClass('disappear')) {
                 var element = $('#submit_second');
                 element.removeClass('disappear');
                 $('#Table_2').addClass('disappear');
@@ -548,12 +553,35 @@
             }
         });
     </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-btn').click(function () {
+                var row = $(this).closest('tr');  // 获取按钮所在的行
+                var id = row.find('td:first').text();  // 提取该行的第一个单元格内容，即ID号
+
+                // 发送ID号到后端
+                $.ajax({
+                    url: '/delete-endpoint',  // 替换为实际的后端删除接口URL
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (response) {
+                        alert('删除成功');
+                        row.remove();  // 从表格中移除该行
+                    },
+                    error: function (xhr, status, error) {
+                        alert('删除失败: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
     <script src="../static/js/jquery-3.7.1.min.js"></script>
     <script src="../static/js/jquery.dropdown.js"></script>
     <script src='../static/js/jquery.min.js'></script>
     <script src='../static/js/mustache.min.js'></script>
     <script src="../static/js/script-1.js"></script>
-    
+
     <script src="../static/plugins/bootstrap-4.6.2/js/bootstrap.js"></script>
     <script type="text/javascript" src="../static/js/jquery.slimscroll.min.js"></script>
     <script type="text/javascript" src="../static/js/left-side-menu.js"></script>

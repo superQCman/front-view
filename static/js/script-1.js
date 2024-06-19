@@ -1,12 +1,3 @@
-// $(function() {
-//     // 在这里获取到的 data 是从 Flask 传递过来的数据
-//     console.log('Data from Flask:', data);
-
-//     // 其他逻辑，基于从 Flask 获取的数据
-//     var today = new Date();
-//     var items = generateItems(data);
-//     refreshNotifications(items, today);
-// });
 $.getJSON('/get_data', function(data) {
   var today = new Date();
   console.log("Data fetched:", data);  // Log the fetched data

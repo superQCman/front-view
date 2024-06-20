@@ -10,13 +10,13 @@
 
 <body>
     <!-- partial:index.partial.html -->
-    <form action="upload.php" method="POST">
-        <input type="file" multiple>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="files" multiple>
         <p>拖拽文件或者点击这个区域.</p>
         <button type="submit">上传</button>
     </form>
     <!-- partial -->
-    <script src='js/jquery.min.js'></script>
+    <script src='../static/js/jquery.min.js'></script>
     <script src="../static/js/script-pdf.js"></script>
 
 </body>

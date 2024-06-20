@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../static/css/common.css">
     <link rel="stylesheet" href="../static/css/iconfont.css">
     <link rel="stylesheet" href="../static/css/jquery.dropdown_select.css">
+    <link rel="stylesheet" href="../static/css/FrostModals.min.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <style>
         body {
@@ -109,6 +110,10 @@
             padding: 20px 0;
             color: #4e555b;
         }
+
+        .custom-modal-content {
+            color: black;
+        }
     </style>
 </head>
 
@@ -129,7 +134,7 @@
 
             <div class="rightBorder">
                 <!-- 添加上传pdf按钮 -->
-                <a class="dropdown-item" href="#">上传pdf</a>
+                <a class="dropdown-item disappear" id="pdf" href="#">上传pdf</a>
                 <ul class="navbar-right navbar-nav nav">
 
                     <li class="nav-item dropdown">
@@ -172,8 +177,9 @@
                     <div class="lsm-scroll">
                         <div class="lsm-sidebar">
                             <ul>
-                                <li class="lsm-sidebar-item radius show_back_ground" onclick="clickme(this)" id="detail">
-                                    <a href="#"><i class="my-icon lsm-sidebar-icon" ></i><span
+                                <li class="lsm-sidebar-item radius show_back_ground" onclick="clickme(this)"
+                                    id="detail">
+                                    <a href="#"><i class="my-icon lsm-sidebar-icon"></i><span
                                             id="record_1">家庭投保记录</span><i class="my-icon lsm-sidebar-more"></i></a>
                                 </li>
                                 <li class="lsm-sidebar-item radius" onclick="clickme(this)">
@@ -502,7 +508,8 @@
                             <td>1</td>
                             <td>5</td>
                             <td>
-                                <a href="#"><button type="button" class="btn btn-light" onclick=clickme(this)>详细信息</button></a>
+                                <a href="#"><button type="button" class="btn btn-light"
+                                        onclick=AI(this)>AI分析</button></a>
                             </td>
                         </tr>
                         <tr>
@@ -511,7 +518,8 @@
                             <td>2</td>
                             <td>4</td>
                             <td>
-                                <a href="#"><button type="button" class="btn btn-light" onclick=clickme(this)>详细信息</button></a>
+                                <a href="#"><button type="button" class="btn btn-light"
+                                        onclick=AI(this)>AI分析</button></a>
                             </td>
                         </tr>
                         <tr>
@@ -520,7 +528,8 @@
                             <td>3</td>
                             <td>8</td>
                             <td>
-                                <a href="#"><button type="button" class="btn btn-light" onclick=clickme(this)>详细信息</button></a>
+                                <a href="#"><button type="button" class="btn btn-light"
+                                        onclick=AI(this)>AI分析</button></a>
                             </td>
                         </tr>
                         <tr>
@@ -529,7 +538,8 @@
                             <td>4</td>
                             <td>2</td>
                             <td>
-                                <a href="#"><button type="button" class="btn btn-light" onclick=clickme(this)>详细信息</button></a>
+                                <a href="#"><button type="button" class="btn btn-light"
+                                        onclick=AI(this)>AI分析</button></a>
                             </td>
                         </tr>
                     </tbody>
@@ -547,12 +557,8 @@
                 $(self).addClass('show_back_ground');
                 $(self).siblings().removeClass('show_back_ground')
             }
-            if($(self).attr('type') === 'button'){
-                $("#detail").addClass('show_back_ground');
-                $("#detail").siblings().removeClass('show_back_ground');
-            }
             var textContent = $(self).find('span').attr('id');
-            if (textContent === 'record_1' && $('#Table_1').hasClass('disappear') || $(self).attr('type') === 'button') {
+            if (textContent === 'record_1' && $('#Table_1').hasClass('disappear')) {
                 console.log($(self).attr('type'));
                 var element = $('#Table_1');
                 element.removeClass('disappear');
@@ -561,6 +567,10 @@
                 $('#submit_second').addClass('disappear');
                 $('#statistic').addClass('disappear');
                 $('#search').children().removeClass('disappear');
+                if(!$('#pdf').hasClass('disappear')){
+                    $('#pdf').addClass('disappear');
+                }
+                
             } else if (textContent === 'record_2' && $('#Table_2').hasClass('disappear')) {
                 var element = $('#Table_2');
                 element.removeClass('disappear');
@@ -569,6 +579,9 @@
                 $('#submit_second').addClass('disappear');
                 $('#statistic').addClass('disappear');
                 $('#search').children().removeClass('disappear');
+                if(!$('#pdf').hasClass('disappear')){
+                    $('#pdf').addClass('disappear');
+                }
             } else if (textContent === 'add_1' && $('#submit_first').hasClass('disappear')) {
                 var element = $('#submit_first');
                 element.removeClass('disappear');
@@ -577,6 +590,7 @@
                 $('#submit_second').addClass('disappear');
                 $('#statistic').addClass('disappear');
                 $('#search').children().addClass('disappear');
+                $('#pdf').removeClass('disappear')
             } else if (textContent === 'add_2' && $('#submit_second').hasClass('disappear')) {
                 var element = $('#submit_second');
                 element.removeClass('disappear');
@@ -585,6 +599,9 @@
                 $('#submit_first').addClass('disappear');
                 $('#statistic').addClass('disappear');
                 $('#search').children().addClass('disappear');
+                if(!$('#pdf').hasClass('disappear')){
+                    $('#pdf').addClass('disappear');
+                }
             } else if (textContent === 'st' && $('#statistic').hasClass('disappear')) {
                 var element = $('#statistic');
                 element.removeClass('disappear');
@@ -593,9 +610,32 @@
                 $('#submit_first').addClass('disappear');
                 $('#submit_second').addClass('disappear');
                 $('#search').children().addClass('disappear');
+                if(!$('#pdf').hasClass('disappear')){
+                    $('#pdf').addClass('disappear');
+                }
             }
         }
 
+    </script>
+    <script src="../static/js/FrostModals.min.js"></script>
+    <script>
+        function AI(self) {
+            FrostifyModal.set({
+                title: 'AI投保建议',
+                // 这里一定要加custom-modal-content否则字体是白色的
+                content: '<div class="custom-modal-content">Lorem ipsum dolor sit amet,www.bootstrapmb.com consectetur adipisicing elit. \
+                    Accusantium ad amet, aut delectus deserunt doloremque eos eum facere fuga minus mollitia nemo numquam obcaecati, omnis quod saepe sit, voluptate. Nihil!</div>', 
+                onok: () => { },
+                oncancel: () => { },
+                isClosable: true,
+                isDraggable: true,
+                reverseButtons: false,
+                labels: {
+                    ok: '好的',
+                    cancel: '关闭'
+                },
+            }).show();
+        }
     </script>
     <!-- 添加 -->
     <script src="../static/js/jquery.dropdown.js"></script>
@@ -705,7 +745,7 @@
                 var value_2 = parseInt($(this).find('td:nth-child(2)').text());
                 var value_3 = parseInt($(this).find('td:nth-child(3)').text());
                 var value_4 = parseInt($(this).find('td:nth-child(4)').text());
-                
+
                 console.log(name, value_3, value_4); // Log the values to debug
 
                 categories.push(name);
